@@ -16,21 +16,46 @@ const { title } = Astro.props;
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
-		<slot />
+
+	<body class="text-lg text-primary">
+		<div class="m-4 flex justify-center w-full">
+			<div class="max-w-2xl">
+				<slot />
+			</div>
+		</div>
 	</body>
 </html>
+
 <style is:global>
-	:root {
-		--accent: 124, 58, 237;
-		--accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-	}
+	@tailwind base;
+	@tailwind components;
+	@tailwind utilities;
+
 	html {
 		font-family: system-ui, sans-serif;
 		background-color: #F6F6F6;
 	}
-	code {
-		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-			Bitstream Vera Sans Mono, Courier New, monospace;
+
+	@layer base {
+		h1 {
+			@apply font-bold text-5xl mt-4 mb-6;
+		}
+		h2 {
+			@apply font-bold text-2xl mt-8 mb-2;
+		}
+		p {
+		}
+		p + p {
+			@apply mt-4;
+		}
+		ul {
+			@apply list-disc list-outside ml-6 mb-6;
+		}
+		li {
+			@apply my-2 ml-2;
+		}
+		a {
+			@apply text-link;
+		}
 	}
 </style>
